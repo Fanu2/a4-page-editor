@@ -4,7 +4,7 @@ import { SketchPicker } from 'react-color';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import { saveAs } from 'file-saver';
-// Removed html-docx-js import
+import * as htmlDocx from 'html-docx-js/dist/html-docx';
 
 const A4Page = styled.div`
   width: 210mm;
@@ -82,6 +82,12 @@ export default function Home() {
     });
   };
 
+  const exportToDocx = () => {
+    const contentHtml = contentRef.current.innerHTML;
+    const docxBlob = htmlDocx.asBlob(contentHtml);
+    saveAs(docxBlob, 'document.docx');
+  };
+
   return (
     <EditorWrapper>
       <Toolbar>
@@ -120,7 +126,7 @@ export default function Home() {
         <div>
           <button onClick={exportToImage}>Save as Image</button>
           <button onClick={exportToPDF}>Save as PDF</button>
-          {/* Removed the DOCX button */}
+          <button onClick={exportToDocx}>Save as DOCX</button>
         </div>
       </Toolbar>
 
