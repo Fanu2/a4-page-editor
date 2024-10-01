@@ -3,8 +3,7 @@ import styled from 'styled-components';
 import { SketchPicker } from 'react-color';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
-import { saveAs } from 'file-saver';
-// Removed html-docx-js import
+// Removed unused 'saveAs' import
 
 const A4Page = styled.div`
   width: 210mm;
@@ -33,17 +32,6 @@ const Toolbar = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
-`;
-
-const ContentEditable = styled.div`
-  width: 100%;
-  min-height: 100%;
-  outline: none;
-  border: 1px solid #eaeaea;
-  padding: 10px;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
 `;
 
 export default function Home() {
@@ -120,7 +108,6 @@ export default function Home() {
         <div>
           <button onClick={exportToImage}>Save as Image</button>
           <button onClick={exportToPDF}>Save as PDF</button>
-          {/* Removed the DOCX button */}
         </div>
       </Toolbar>
 
